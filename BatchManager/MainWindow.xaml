@@ -1,0 +1,12 @@
+﻿<Window x:Class="BatchManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BatchManager" Height="350" Width="525">
+    <Grid>
+        <TextBox Name="myTextBox" Margin="10,35,187,0" VerticalAlignment="Top" Height="40" />
+        <Button Name="myButton" Content="Click me!" Margin="352,35,25,260" Click="myButton_Click" />
+        <ComboBox Name="myComboBox" Margin="10,97,187,0" VerticalAlignment="Top" ItemsSource="{Binding BatchCommands}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedBatchCommand}" Height="40" RenderTransformOrigin="0.597,-1.416" />
+        <Button Name="myButtontwo" Content="执行" Margin="352,97,25,198" Click="myButtontwo_Click" />
+
+    </Grid>
+</Window>
