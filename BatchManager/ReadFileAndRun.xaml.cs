@@ -55,7 +55,16 @@ namespace BatchManager
             public ViewModel()
             {
                 BatchFiles = new ObservableCollection<string>();
-                LoadBatchFiles();
+
+                try
+                {
+                    LoadBatchFiles();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"发生错误：{ex.Message}", "错误");
+                }
+           
             }
 
             private void LoadBatchFiles()
@@ -68,10 +77,11 @@ namespace BatchManager
                 // 获取上一级目录的路径
                 //string parentDirectoryPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
                 // 获取上三级目录的路径
-                string parentDirectoryPath = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName;
+                //string parentDirectoryPath = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName;
+                string projectFinalPath = Directory.GetCurrentDirectory();
 
                 // 获取批处理文件所在的目录的路径
-                string batchFilesDirectoryPath = Path.Combine(parentDirectoryPath, "batfiles");
+                string batchFilesDirectoryPath = Path.Combine(projectFinalPath, "batfiles");
 
                 // 获取所有批处理文件的路径
                 string[] batchFiles = Directory.GetFiles(batchFilesDirectoryPath, "*.bat");
@@ -95,11 +105,13 @@ namespace BatchManager
                 {
                     //// 获取项目目录的路径
                     //string projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+                    string projectFinalPath =Directory.GetCurrentDirectory();
+
                     // 获取上三级目录的路径
-                    string parentDirectoryPath = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName;
+                    //string parentDirectoryPath = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName;
 
                     // 获取批处理文件所在的目录的路径
-                    string batchFilesDirectoryPath = Path.Combine(parentDirectoryPath, "batfiles");
+                    string batchFilesDirectoryPath = Path.Combine(projectFinalPath, "batfiles");
                     // 构建要执行的批处理文件的完整路径
                     string batchFilePath = Path.Combine(batchFilesDirectoryPath, SelectedBatchFile);
 

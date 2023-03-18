@@ -12,4 +12,10 @@
     <PackageReference Include="MaterialDesignThemes.Wpf" Version="1.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="batfiles\清理指定文件夹里的所有文件和子目录.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
